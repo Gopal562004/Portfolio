@@ -77,7 +77,7 @@ const Projects = () => {
             >
               <p>Check Live Site</p>
               <img
-                src="../../public/images/logo/arrow-up.png"
+                src="/images/logo/arrow-up.png"
                 alt="arrow"
                 draggable={false}
                 className="w-3 h-3"
