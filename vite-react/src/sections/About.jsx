@@ -52,7 +52,7 @@ useEffect(() => {
         <div className="col-span-1 xl:row-span-3">
           <div className="grid-container">
             <img
-              src="../../public/images/techimg-Photoroom.png"
+              src="/images/techimg-Photoroom.png"
               alt="grid-2"
               draggable="false"
               className="w-full sm:h-[276px] h-fit object-contain select-none pointer-events-none"
