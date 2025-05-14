@@ -130,7 +130,7 @@ useEffect(() => {
         <div className="xl:col-span-1 xl:row-span-2">
           <div className="grid-container">
             <img
-              src="/images/grid4.png"
+              src="/images/contact.png"
               alt="grid-4"
               draggable="false"
               className="w-full md:h-[126px] sm:h-[276px] h-fit object-cover sm:object-top select-none pointer-events-none"
