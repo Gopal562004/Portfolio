@@ -8,30 +8,45 @@ const Footer = () => {
       </div>
 
       <div className="flex gap-3 ">
-        <div className="social-icon cursor-pointer">
+        <a
+          href="https://github.com/Gopal562004"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="social-icon cursor-pointer"
+        >
           <img
             src="https://avatars1.githubusercontent.com/u/9919?v=4"
             alt="github"
             className="w-1/2 h-1/2"
             draggable={false}
           />
-        </div>
-        <div className="social-icon cursor-pointer">
+        </a>
+        <a
+          href="https://www.linkedin.com/in/gopal-gawas-421a74275/"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="social-icon cursor-pointer"
+        >
           <img
-            src="https://cdn.pixabay.com/photo/2015/03/10/17/30/twitter-667462_640.png"
-            alt="twitter"
+            src="../../public/images/logo/linkedin.png"
+            alt="linkedin"
             draggable={false}
             className="w-1/2 h-1/2"
           />
-        </div>
-        <div className="social-icon cursor-pointer">
+        </a>
+        <a
+          href="https://www.instagram.com/gopal_gawas5/"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="social-icon cursor-pointer"
+        >
           <img
             src="https://upload.wikimedia.org/wikipedia/commons/9/95/Instagram_logo_2022.svg"
             alt="instagram"
             draggable={false}
             className="w-1/2 h-1/2"
           />
-        </div>
+        </a>
       </div>
 
       <p className="text-white-500">© 2025 Gopal Gawas. All rights reserved.</p>
