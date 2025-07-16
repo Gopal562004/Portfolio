@@ -3,6 +3,9 @@ export default {
   content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
   theme: {
     extend: {
+      scrollBehavior: {
+        smooth: "smooth",
+      },
       animation: {
         "spin-slow": "spin 4s linear infinite",
       },
