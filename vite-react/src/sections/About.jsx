@@ -293,7 +293,7 @@ const About = () => {
         <div className="xl:col-span-2 xl:row-span-3">
           <div className="grid-container">
             <img
-              src="../../public/images/code4-removebg-preview.png"
+              src="/images/code4-removebg-preview.png"
               alt="grid-3"
               draggable="false"
               className="w-full sm:h-[266px] h-fit object-contain select-none pointer-events-none"
@@ -315,7 +315,7 @@ const About = () => {
         <div className="xl:col-span-1 xl:row-span-2">
           <div className="grid-container">
             <img
-              src="../../public/images/contact.png"
+              src="/images/contact.png"
               alt="grid-4"
               draggable="false"
               className="w-full md:h-[126px] sm:h-[276px] h-fit object-cover sm:object-top select-none pointer-events-none"
@@ -326,8 +326,8 @@ const About = () => {
                 <img
                   src={
                     hasCopied
-                      ? "../../public/images/tick.svg"
-                      : "../../public/images/copy.svg"
+                      ? "/images/tick.svg"
+                      : "/images/copy.svg"
                   }
                   alt="copy"
                   draggable="false"
