@@ -28,7 +28,7 @@ const Footer = () => {
           className="social-icon cursor-pointer"
         >
           <img
-            src="https://www.citypng.com/photo/12442/hd-vector-flat-linkedin-in-round-icon-png"
+            src="/images/logo/linkedin.png"
             alt="linkedin"
             draggable={false}
             className="w-1/2 h-1/2"
