@@ -77,7 +77,7 @@ const Projects = () => {
             >
               <p>Check Live Site</p>
               <img
-                src="/images/logo/arrow-up.png"
+                src="../../public/images/logo/arrow-up.png"
                 alt="arrow"
                 draggable={false}
                 className="w-3 h-3"
@@ -123,13 +123,13 @@ const Projects = () => {
             </Suspense>
 
             {/* Lock vertical rotation */}
-            <OrbitControls
+            {/* <OrbitControls
               enableZoom={false}
               enablePan={false}
               rotateSpeed={0.8}
               minPolarAngle={Math.PI / 2}
               maxPolarAngle={Math.PI / 2}
-            />
+            /> */}
           </Canvas>
         </div>
       </div>
