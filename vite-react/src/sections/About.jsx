@@ -283,7 +283,7 @@ const About = () => {
                 name="Get Resume"
                 isBeam
                 containerClass="w-full mt-10"
-                href="https://drive.google.com/file/d/1TZJPa0aecp6JzqnvYGny4fmBrz7rax_Y/view?usp=drive_link"
+                href="https://drive.google.com/file/d/1TZJPa0aecp6JzqnvYGny4fmBrz7rax_Y/view?usp=sharing"
               />
             </div>
           </div>
