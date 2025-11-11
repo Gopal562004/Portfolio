@@ -355,7 +355,7 @@ export const myProjects = [
       border: "0.2px solid #3b0a78",
       boxShadow: "0px 0px 40px 0px rgba(155, 50, 255, 0.35)",
     },
-    spotlight: "/images/spotlight/bg_gradify.webp",
+    spotlight: "/images/spotlight/gradify_bg.png",
     tags: [
       { id: 1, name: "Next.js", path: "/images/logo/next.png" },
       {
@@ -388,7 +388,7 @@ export const myProjects = [
       border: "0.2px solid #D1D1D1",
       boxShadow: "0px 0px 60px 0px #D6A8644D",
     },
-    spotlight: "/images/spotlight/zudio.png",
+    spotlight: "/images/spotlight/zudio_bg.png",
     tags: [
       { id: 1, name: "React.js", path: "/images/logo/react.png" },
       { id: 2, name: "Node.js", path: "/images/logo/node.png" },
@@ -413,7 +413,7 @@ export const myProjects = [
       border: "0.2px solid #1F3A65",
       boxShadow: "0px 0px 50px 0px #2F67B64D",
     },
-    spotlight: "/images/spotlight/sangam.png",
+    spotlight: "/images/spotlight/sangam_bg.png",
     tags: [
       { id: 1, name: "React.js", path: "/images/logo/react.png" },
       { id: 2, name: "Node.js", path: "/images/logo/node.png" },
@@ -438,7 +438,7 @@ export const myProjects = [
       border: "0.2px solid #115C22",
       boxShadow: "0px 0px 60px 0px rgba(46, 204, 113, 0.4)",
     },
-    spotlight: "/images/spotlight/agriculture.png",
+    spotlight: "/images/spotlight/agri_bg.png",
     tags: [
       { id: 1, name: "Python", path: "/images/logo/python.png" },
       { id: 2, name: "Streamlit", path: "/images/logo/streamlit.png" },
@@ -459,7 +459,7 @@ export const myProjects = [
       border: "0.2px solid #3B82F6",
       boxShadow: "0px 0px 50px 0px rgba(59, 130, 246, 0.4)",
     },
-    spotlight: "/images/spotlight/makaan4u.png",
+    spotlight: "/images/spotlight/makaan4u_bg.png",
     tags: [
       { id: 1, name: "React.js", path: "/images/logo/react.png" },
       { id: 2, name: "Node.js", path: "/images/logo/node.png" },
@@ -484,7 +484,7 @@ export const myProjects = [
       border: "0.2px solid #0E2D58",
       boxShadow: "0px 0px 60px 0px #2F67B64D",
     },
-    spotlight: "/images/spotlight/collegequest.png",
+    spotlight: "/images/spotlight/collegequest_bg.png",
     tags: [
       { id: 1, name: "React.js", path: "/images/logo/react.png" },
       { id: 2, name: "JavaScript", path: "/images/logo/js.png" },
@@ -504,7 +504,7 @@ export const myProjects = [
       border: "0.2px solid #444",
       boxShadow: "0px 0px 20px 0px rgba(255, 255, 255, 0.2)",
     },
-    spotlight: "/images/spotlight/codeverse.png",
+    spotlight: "/images/spotlight/codeverse_bg.png",
     tags: [
       { id: 1, name: "React.js", path: "/images/logo/react.png" },
       { id: 2, name: "Node.js", path: "/images/logo/node.png" },
