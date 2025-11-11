@@ -348,31 +348,30 @@ export const myProjects = [
     subdesc:
       "Developed with Next.js and Gemini integration, Gradify leverages AI models to generate tailored advice, career roadmaps, and resume insights based on user inputs.",
     href: "https://update-gradify-ai-carrer-coach.vercel.app/",
-    texture: "../../public/images/videos/gradify.mp4",
-    logo: "../../public/images/logo/logo_gradify.png",
+    texture: "/images/videos/gradify.mp4",
+    logo: "/images/logo/logo_gradify.png",
     logoStyle: {
       backgroundColor: "#101010",
-      border: "0.2px solid #3b0a78", // deep purple border
-      boxShadow: "0px 0px 40px 0px rgba(155, 50, 255, 0.35)", // soft neon purple glow
+      border: "0.2px solid #3b0a78",
+      boxShadow: "0px 0px 40px 0px rgba(155, 50, 255, 0.35)",
     },
-
-    spotlight: "../../public/images/spotlight/bg_gradify.webp",
+    spotlight: "/images/spotlight/bg_gradify.webp",
     tags: [
-      { id: 1, name: "Next.js", path: "../../public/images/logo/next.png" },
+      { id: 1, name: "Next.js", path: "/images/logo/next.png" },
       {
         id: 2,
         name: "TypeScript",
-        path: "../../public/images/logo/Typescript_logo_2020.svg.png",
+        path: "/images/logo/Typescript_logo_2020.svg.png",
       },
       {
         id: 3,
         name: "Gemini AI",
-        path: "../../public/images/logo/gemini.png",
+        path: "/images/logo/gemini.png",
       },
       {
         id: 4,
         name: "TailwindCSS",
-        path: "../../public/images/logo/tailwindcss.png",
+        path: "/images/logo/tailwindcss.png",
       },
     ],
   },
@@ -382,48 +381,47 @@ export const myProjects = [
     subdesc:
       "Using MongoDB, Express, React, Node.js, and Tailwind CSS, Zudio offers a seamless shopping experience with real-time updates and secure transactions.",
     href: "https://zudio-seven.vercel.app/",
-    texture: "../../public/images/videos/zudio.mp4",
-    logo: "../../public/images/logo/zudio.png",
+    texture: "/images/videos/zudio.mp4",
+    logo: "/images/logo/zudio.png",
     logoStyle: {
       backgroundColor: "#000000",
       border: "0.2px solid #D1D1D1",
       boxShadow: "0px 0px 60px 0px #D6A8644D",
     },
-    spotlight: "../../public/images/spotlight/zudio.png",
+    spotlight: "/images/spotlight/zudio.png",
     tags: [
-      { id: 1, name: "React.js", path: "../../public/images/logo/react.png" },
-      { id: 2, name: "Node.js", path: "../../public/images/logo/node.png" },
-      { id: 3, name: "MongoDB", path: "../../public/images/logo/mongodb.png" },
+      { id: 1, name: "React.js", path: "/images/logo/react.png" },
+      { id: 2, name: "Node.js", path: "/images/logo/node.png" },
+      { id: 3, name: "MongoDB", path: "/images/logo/mongodb.png" },
       {
         id: 4,
         name: "TailwindCSS",
-        path: "../../public/images/logo/tailwindcss.png",
+        path: "/images/logo/tailwindcss.png",
       },
     ],
   },
-  
   {
     title: "Sangam - Alumni Management Platform",
     desc: "Sangam is a digital platform for centralized alumni data management and engagement, enabling institutions to maintain strong connections with graduates and foster collaboration.",
     subdesc:
       "Built using React, Node.js, and MongoDB, Sangam includes features like alumni profiles, event management, and networking functionalities, with a modern and intuitive UI.",
     href: "https://clean-sangam.vercel.app/alumni",
-    texture: "../../public/images/videos/sangam.mp4",
-    logo: "../../public/images/logo/sangam.jpg",
+    texture: "/images/videos/sangam.mp4",
+    logo: "/images/logo/sangam.jpg",
     logoStyle: {
       backgroundColor: "#12284A",
       border: "0.2px solid #1F3A65",
       boxShadow: "0px 0px 50px 0px #2F67B64D",
     },
-    spotlight: "../../public/images/spotlight/sangam.png",
+    spotlight: "/images/spotlight/sangam.png",
     tags: [
-      { id: 1, name: "React.js", path: "../../public/images/logo/react.png" },
-      { id: 2, name: "Node.js", path: "../../public/images/logo/node.png" },
-      { id: 3, name: "MongoDB", path: "../../public/images/logo/mongodb.png" },
+      { id: 1, name: "React.js", path: "/images/logo/react.png" },
+      { id: 2, name: "Node.js", path: "/images/logo/node.png" },
+      { id: 3, name: "MongoDB", path: "/images/logo/mongodb.png" },
       {
         id: 4,
         name: "Express.js",
-        path: "../../public/images/logo/express.webp",
+        path: "/images/logo/express.webp",
       },
     ],
   },
@@ -433,31 +431,19 @@ export const myProjects = [
     subdesc:
       "Developed using Python and Streamlit, AgriSmart leverages machine learning models to provide AI-driven analysis that optimizes farming practices and enhances agricultural productivity.",
     href: "https://agrivision-focus-on-crop-monitoring-and-weather-forecasting-bm.streamlit.app/",
-    texture: "../../public/images/videos/agriculture.mp4",
-    logo: "../../public/images/logo/agri.png",
+    texture: "/images/videos/agriculture.mp4",
+    logo: "/images/logo/agri.png",
     logoStyle: {
       backgroundColor: "#082C0F",
       border: "0.2px solid #115C22",
       boxShadow: "0px 0px 60px 0px rgba(46, 204, 113, 0.4)",
     },
-    spotlight: "../../public/images/spotlight/agriculture.png",
+    spotlight: "/images/spotlight/agriculture.png",
     tags: [
-      { id: 1, name: "Python", path: "../../public/images/logo/python.png" },
-      {
-        id: 2,
-        name: "Streamlit",
-        path: "../../public/images/logo/streamlit.png",
-      }, // ✅ updated from Flask
-      {
-        id: 3,
-        name: "Machine Learning",
-        path: "../../public/images/logo/ml.png",
-      },
-      {
-        id: 4,
-        name: "HTML/CSS",
-        path: "../../public/images/logo/html_css.png",
-      },
+      { id: 1, name: "Python", path: "/images/logo/python.png" },
+      { id: 2, name: "Streamlit", path: "/images/logo/streamlit.png" },
+      { id: 3, name: "Machine Learning", path: "/images/logo/ml.png" },
+      { id: 4, name: "HTML/CSS", path: "/images/logo/html_css.png" },
     ],
   },
   {
@@ -466,22 +452,22 @@ export const myProjects = [
     subdesc:
       "Developed using the MERN stack, Makaan4U simplifies property discovery and management with dynamic filtering, responsive layouts, and secure user authentication.",
     href: "https://makaan4u.vercel.app/",
-    texture: "../../public/images/videos/makaan4u.mp4",
-    logo: "../../public/images/logo/makaan4u.webp",
+    texture: "/images/videos/makaan4u.mp4",
+    logo: "/images/logo/makaan4u.webp",
     logoStyle: {
       backgroundColor: "#1A202C",
-      border: "0.2px solid #3B82F6", // Tailwind blue-500 border
-      boxShadow: "0px 0px 50px 0px rgba(59, 130, 246, 0.4)", // soft blue glow
+      border: "0.2px solid #3B82F6",
+      boxShadow: "0px 0px 50px 0px rgba(59, 130, 246, 0.4)",
     },
-    spotlight: "../../public/images/spotlight/makaan4u.png",
+    spotlight: "/images/spotlight/makaan4u.png",
     tags: [
-      { id: 1, name: "React.js", path: "../../public/images/logo/react.png" },
-      { id: 2, name: "Node.js", path: "../../public/images/logo/node.png" },
-      { id: 3, name: "MongoDB", path: "../../public/images/logo/mongodb.png" },
+      { id: 1, name: "React.js", path: "/images/logo/react.png" },
+      { id: 2, name: "Node.js", path: "/images/logo/node.png" },
+      { id: 3, name: "MongoDB", path: "/images/logo/mongodb.png" },
       {
         id: 4,
         name: "TailwindCSS",
-        path: "../../public/images/logo/tailwindcss.png",
+        path: "/images/logo/tailwindcss.png",
       },
     ],
   },
@@ -491,22 +477,18 @@ export const myProjects = [
     subdesc:
       "Built with React and Firebase, CollegeQuest offers a smooth user experience, allowing students to quickly search for colleges and scholarship opportunities based on their preferences.",
     href: "https://college-quest-new.vercel.app/",
-    texture: "../../public/images/videos/collegequest.mp4",
-    logo: "../../public/images/logo/collegequest.png",
+    texture: "/images/videos/collegequest.mp4",
+    logo: "/images/logo/collegequest.png",
     logoStyle: {
       backgroundColor: "#0E1F38",
       border: "0.2px solid #0E2D58",
       boxShadow: "0px 0px 60px 0px #2F67B64D",
     },
-    spotlight: "../../public/images/spotlight/collegequest.png",
+    spotlight: "/images/spotlight/collegequest.png",
     tags: [
-      { id: 1, name: "React.js", path: "../../public/images/logo/react.png" },
-      { id: 2, name: "JavaScript", path: "../../public/images/logo/js.png" },
-      {
-        id: 3,
-        name: "FireBase",
-        path: "../../public/images/logo/firebase.png",
-      },
+      { id: 1, name: "React.js", path: "/images/logo/react.png" },
+      { id: 2, name: "JavaScript", path: "/images/logo/js.png" },
+      { id: 3, name: "FireBase", path: "/images/logo/firebase.png" },
     ],
   },
   {
@@ -515,27 +497,23 @@ export const myProjects = [
     subdesc:
       "Built using the MERN stack, CodeVerse provides a platform where developers can create, like, comment, and share code and projects, with user authentication and responsive design.",
     href: "https://code-verse-phi.vercel.app/",
-    texture:
-      "../../public/images/videos/codeverse_video (online-video-cutter.com).mp4",
-    logo: "../../public/images/logo/codeverse.png",
+    texture: "/images/videos/codeverse_video (online-video-cutter.com).mp4",
+    logo: "/images/logo/codeverse.png",
     logoStyle: {
       backgroundColor: "#141b34",
       border: "0.2px solid #444",
       boxShadow: "0px 0px 20px 0px rgba(255, 255, 255, 0.2)",
     },
-    spotlight: "../../public/images/spotlight/codeverse.png",
+    spotlight: "/images/spotlight/codeverse.png",
     tags: [
-      { id: 1, name: "React.js", path: "../../public/images/logo/react.png" },
-      { id: 2, name: "Node.js", path: "../../public/images/logo/node.png" },
-      { id: 3, name: "MongoDB", path: "../../public/images/logo/mongodb.png" },
-      {
-        id: 4,
-        name: "TailwindCSS",
-        path: "../../public/images/logo/tailwindcss.png",
-      },
+      { id: 1, name: "React.js", path: "/images/logo/react.png" },
+      { id: 2, name: "Node.js", path: "/images/logo/node.png" },
+      { id: 3, name: "MongoDB", path: "/images/logo/mongodb.png" },
+      { id: 4, name: "TailwindCSS", path: "/images/logo/tailwindcss.png" },
     ],
   },
 ];
+
 
 
 export const calculateSizes = (isSmall, isMobile, isTablet) => {
