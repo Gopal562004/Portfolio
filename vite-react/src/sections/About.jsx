@@ -224,8 +224,9 @@ const About = () => {
             <div>
               <p className="grid-headtext">Tech Stack</p>
               <p className="grid-subtext">
-                I specialize in a variety of languages, frameworks, and tools
-                that allow me to build robust and scalable applications.
+                I specialize in a diverse set of technologies that help me build robust,
+scalable, and high-performance applications.
+
               </p>
             </div>
           </div>
@@ -274,8 +275,7 @@ const About = () => {
                 I’m flexible with time zones and open to collaborating globally
               </p>
               <p className="grid-subtext">
-                I&apos;m based in Palghar, Maharashtra, India and open to remote
-                work or local on-site opportunities.
+                I'm based in Mumbai, Maharashtra, India, and open to both remote work and local on-site opportunities.
               </p>
               <Button
                 name="Get Resume"
