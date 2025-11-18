@@ -206,9 +206,7 @@ const About = () => {
             <div>
               <p className="grid-headtext">Hi, I’m Gopal Gawas</p>
               <p className="grid-subtext">
-                I'm a 3rd year Computer Engineering student passionate about
-                full-stack development. I love building modern, responsive, and
-                interactive web apps using the MERN stack.
+                Final-year Computer Engineering student passionate about full-stack development and cloud technologies. Skilled in building modern, scalable, and user-centric applications across web and cloud ecosystems.
               </p>
             </div>
           </div>
