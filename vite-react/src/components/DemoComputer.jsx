@@ -1,4 +1,55 @@
-import { useRef, useEffect } from "react";
+// // import { useRef, useEffect } from "react";
+// import { useGLTF } from "@react-three/drei";
+// import * as THREE from "three";
+
+// const DemoComputer = ({ videoSrc }) => {
+//   const group = useRef();
+//   const { nodes } = useGLTF("/models/computer.glb");
+
+//   const videoRef = useRef(document.createElement("video"));
+
+//   useEffect(() => {
+//     const video = videoRef.current;
+
+//     video.src = videoSrc;
+//     video.crossOrigin = "anonymous";
+//     video.loop = true;
+//     video.muted = true;
+//     video.playsInline = true;
+//     video.play();
+
+//     const videoTexture = new THREE.VideoTexture(video);
+
+//     // Loop through nodes and replace the material of the screen mesh
+//     Object.values(nodes).forEach((node) => {
+//       if (node.type === "Mesh" && node.name.toLowerCase().includes("screen")) {
+//         node.material = new THREE.MeshBasicMaterial({ map: videoTexture });
+//       }
+//     });
+//   }, [nodes, videoSrc]);
+
+//   return (
+//     <group ref={group} dispose={null}>
+//       {Object.values(nodes).map((node, index) => {
+//         if (node.type === "Mesh") {
+//           return (
+//             <mesh
+//               key={index}
+//               geometry={node.geometry}
+//               material={node.material}
+//               castShadow
+//               receiveShadow
+//             />
+//           );
+//         }
+//         return null;
+//       })}
+//     </group>
+//   );
+// };
+
+// export default DemoComputer;
+import { useRef, useEffect, useState } from "react";
 import { useGLTF } from "@react-three/drei";
 import * as THREE from "three";
 
@@ -6,27 +57,33 @@ const DemoComputer = ({ videoSrc }) => {
   const group = useRef();
   const { nodes } = useGLTF("/models/computer.glb");
 
-  const videoRef = useRef(document.createElement("video"));
+  const [videoTexture, setVideoTexture] = useState(null);
 
   useEffect(() => {
-    const video = videoRef.current;
-
+    const video = document.createElement("video");
     video.src = videoSrc;
-    video.crossOrigin = "anonymous";
     video.loop = true;
     video.muted = true;
     video.playsInline = true;
-    video.play();
+    video.crossOrigin = "anonymous";
 
-    const videoTexture = new THREE.VideoTexture(video);
+    // 🔥 WAIT UNTIL THE FIRST FRAME LOADS
+    video.onloadeddata = () => {
+      video.play();
+      const texture = new THREE.VideoTexture(video);
+      setVideoTexture(texture); // set only when ready
+    };
+  }, [videoSrc]);
 
-    // Loop through nodes and replace the material of the screen mesh
-    Object.values(nodes).forEach((node) => {
-      if (node.type === "Mesh" && node.name.toLowerCase().includes("screen")) {
-        node.material = new THREE.MeshBasicMaterial({ map: videoTexture });
-      }
-    });
-  }, [nodes, videoSrc]);
+  // 🔥 DO NOT RENDER COMPUTER UNTIL VIDEO TEXTURE IS READY
+  if (!videoTexture) return null;
+
+  // Apply video texture to screen mesh
+  Object.values(nodes).forEach((node) => {
+    if (node.type === "Mesh" && node.name.toLowerCase().includes("screen")) {
+      node.material = new THREE.MeshBasicMaterial({ map: videoTexture });
+    }
+  });
 
   return (
     <group ref={group} dispose={null}>
