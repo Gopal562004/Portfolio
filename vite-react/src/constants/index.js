@@ -268,7 +268,7 @@ export const clientReviews = [
 //     subdesc:
 //       "Built with React and Firebase, CollegeQuest offers a smooth user experience, allowing students to quickly search for colleges and scholarship opportunities based on their preferences.",
 //     href: "https://college-quest-new.vercel.app/",
-//     texture: "../../public/images/videos/collegequest.mp4",
+//     texture: "../../public/images/videos/collegequest_demo.mp4",
 //     logo: "../../public/images/logo/collegequest.png",
 //     logoStyle: {
 //       backgroundColor: "#0E1F38",
@@ -292,7 +292,7 @@ export const clientReviews = [
 //     subdesc:
 //       "Built using the MERN stack, CodeVerse provides a platform where developers can create, like, comment, and share code and projects, with user authentication and responsive design.",
 //     href: "https://code-verse-phi.vercel.app/",
-//     texture: "../../public/images/videos/codeverse_video (online-video-cutter.com).mp4",
+//     texture: "../../public/images/videos/codeverse_demo.mp4",
 //     logo: "../../public/images/logo/codeverse.png",
 //     logoStyle: {
 //       backgroundColor: "#141b34",
@@ -317,7 +317,7 @@ export const clientReviews = [
 //     subdesc:
 //       "Using MongoDB, Express, React, Node.js, and Tailwind CSS, Zudio offers a seamless shopping experience with real-time updates and secure transactions.",
 //     href: "https://zudio-seven.vercel.app/",
-//     texture: "../../public/images/videos/zudio.mp4",
+//     texture: "../../public/images/videos/zudio_demo.mp4",
 //     logo: "../../public/images/logo/zudio.png",
 //     logoStyle: {
 //       backgroundColor: "#000000",
@@ -348,7 +348,7 @@ export const myProjects = [
     subdesc:
       "Developed with Next.js and Gemini integration, Gradify leverages AI models to generate tailored advice, career roadmaps, and resume insights based on user inputs.",
     href: "https://update-gradify-ai-carrer-coach.vercel.app/",
-    texture: "/images/videos/gradify.mp4",
+    texture: "/images/videos/gradify_demo.mp4",
     logo: "/images/logo/logo_gradify.png",
     logoStyle: {
       backgroundColor: "#101010",
@@ -381,7 +381,7 @@ export const myProjects = [
     subdesc:
       "Using MongoDB, Express, React, Node.js, and Tailwind CSS, Zudio offers a seamless shopping experience with real-time updates and secure transactions.",
     href: "https://zudio-seven.vercel.app/",
-    texture: "/images/videos/zudio.mp4",
+    texture: "/images/videos/zudio_demo.mp4",
     logo: "/images/logo/zudio.png",
     logoStyle: {
       backgroundColor: "#000000",
@@ -406,7 +406,7 @@ export const myProjects = [
     subdesc:
       "Built using React, Node.js, and MongoDB, Sangam includes features like alumni profiles, event management, and networking functionalities, with a modern and intuitive UI.",
     href: "https://clean-sangam.vercel.app/alumni",
-    texture: "/images/videos/sangam.mp4",
+    texture: "/images/videos/sangam_demo.mp4",
     logo: "/images/logo/sangam.jpg",
     logoStyle: {
       backgroundColor: "#12284A",
@@ -431,7 +431,7 @@ export const myProjects = [
     subdesc:
       "Developed using Python and Streamlit, AgriSmart leverages machine learning models to provide AI-driven analysis that optimizes farming practices and enhances agricultural productivity.",
     href: "https://agrivision-focus-on-crop-monitoring-and-weather-forecasting-bm.streamlit.app/",
-    texture: "/images/videos/agriculture.mp4",
+    texture: "/images/videos/agri_demo.mp4",
     logo: "/images/logo/agri.png",
     logoStyle: {
       backgroundColor: "#082C0F",
@@ -452,7 +452,7 @@ export const myProjects = [
     subdesc:
       "Developed using the MERN stack, Makaan4U simplifies property discovery and management with dynamic filtering, responsive layouts, and secure user authentication.",
     href: "https://makaan4u.vercel.app/",
-    texture: "/images/videos/makaan4u.mp4",
+    texture: "/images/videos/makaan4u_demo.mp4",
     logo: "/images/logo/makaan4u.webp",
     logoStyle: {
       backgroundColor: "#1A202C",
@@ -477,7 +477,7 @@ export const myProjects = [
     subdesc:
       "Built with React and Firebase, CollegeQuest offers a smooth user experience, allowing students to quickly search for colleges and scholarship opportunities based on their preferences.",
     href: "https://college-quest-new.vercel.app/",
-    texture: "/images/videos/collegequest.mp4",
+    texture: "/images/videos/collegequest_demo.mp4",
     logo: "/images/logo/collegequest.png",
     logoStyle: {
       backgroundColor: "#0E1F38",
@@ -497,7 +497,7 @@ export const myProjects = [
     subdesc:
       "Built using the MERN stack, CodeVerse provides a platform where developers can create, like, comment, and share code and projects, with user authentication and responsive design.",
     href: "https://code-verse-phi.vercel.app/",
-    texture: "/images/videos/codeverse_video (online-video-cutter.com).mp4",
+    texture: "/images/videos/codeverse_demo.mp4",
     logo: "/images/logo/codeverse.png",
     logoStyle: {
       backgroundColor: "#141b34",
