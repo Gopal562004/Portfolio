@@ -46,12 +46,6 @@ My personal developer portfolio built using **React + Tailwind CSS** with smooth
 
 ---
 
-## 📸 Screenshots  
 
-> Add screenshots folder  
-```bash
-<img src="./vite-react/screenshot/Screenshot1.png" width="85%" />
-<img src="./vite-react/screenshot/Screenshot2.png" width="85%" />
-<img src="./vite-react/screenshot/Screenshot3.png" width="85%" />
 
 
