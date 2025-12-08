@@ -50,5 +50,5 @@ My personal developer portfolio built using **React + Tailwind CSS** with smooth
 
 > Add screenshots folder  
 ```bash
-/screenshot1.png
+./vite-react/screenshot/screenshot1.png
 /screenshot2.png
