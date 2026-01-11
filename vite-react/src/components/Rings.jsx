@@ -1,92 +1,79 @@
-// import { Center, useTexture } from "@react-three/drei";
-// import { useRef, useEffect } from "react";
-// import { useFrame } from "@react-three/fiber";
+// // ReactLogo.jsx
+// import React from "react";
+// import { useGLTF, Float } from "@react-three/drei";
 
-// const Rings = ({ position = [-1, 15, -12] }) => {
-//   const refList = useRef([]);
-//   const texture = useTexture("models/textures/rings.png");
-
-//   useEffect(() => {
-//     if (refList.current.length === 0) return;
-
-//     refList.current.forEach((r) => {
-//       r.position.set(...position);
-//     });
-//   }, [position]);
-
-//   useFrame(() => {
-//     refList.current.forEach((r, index) => {
-//       const direction = index % 2 === 0 ? 1 : -1; // Alternate direction
-//       r.rotation.y += 0.05 * direction;
-//       r.rotation.x += 0.03 * direction;
-//     });
-//   });
+// const ReactLogo = (props) => {
+//   const { scene } = useGLTF("/models/react_logo.glb");
 
 //   return (
-//     <Center>
-//       <group scale={5} rotation={[0, 1, 0]}>
-//         {Array.from({ length: 4 }, (_, index) => (
-//           <mesh
-//             key={index}
-//             ref={(el) =>
-//               el && !refList.current.includes(el) && refList.current.push(el)
-//             }
-//           >
-//             <torusGeometry args={[(index + 1) * 0.5, 0.1]} />
-//             <meshMatcapMaterial matcap={texture} toneMapped={false} />
-//           </mesh>
-//         ))}
-//       </group>
-//     </Center>
+//     <Float
+//       speed={3}
+//       rotationIntensity={1.2}
+//       floatIntensity={2.5}
+//       floatingRange={[-0.6, 0.6]}
+//     >
+//       <primitive
+//         object={scene}
+//         rotation={[0, 1, Math.PI / 8]} // side-to-side tilt
+//         {...props}
+//       />
+//     </Float>
 //   );
 // };
 
-// export default Rings;
-
-
-import { Center, useTexture } from "@react-three/drei";
-import { useRef, memo } from "react";
+// export default ReactLogo;
+import React, { useRef, useMemo, memo } from "react";
+import { useGLTF, Float } from "@react-three/drei";
 import { useFrame } from "@react-three/fiber";
 
-const Rings = ({ position = [-1, 15, -12] }) => {
-  const ringsRef = useRef([]);
-  const texture = useTexture("models/textures/rings.png");
+const ReactLogo = (props) => {
+  const { scene } = useGLTF("/models/react_logo.glb");
+  const groupRef = useRef();
 
-  useFrame(() => {
-    // Simple loop optimization
-    const rings = ringsRef.current;
-    for (let i = 0; i < rings.length; i++) {
-      const ring = rings[i];
-      if (!ring) continue;
+  // Clone scene once to avoid mutating the original
+  const clonedScene = useMemo(() => {
+    if (!scene) return null;
+    const clone = scene.clone();
 
-      const direction = i % 2 === 0 ? 1 : -1;
-      ring.rotation.y += 0.05 * direction;
-      ring.rotation.x += 0.03 * direction;
-    }
+    // Enable frustum culling on all child meshes
+    clone.traverse((child) => {
+      if (child.isMesh) {
+        child.frustumCulled = true;
+      }
+    });
+
+    return clone;
+  }, [scene]);
+
+  // Add subtle rotation animation
+  useFrame(({ clock }) => {
+    if (!groupRef.current) return;
+
+    // Very subtle rotation to make it feel alive
+    groupRef.current.rotation.y = Math.sin(clock.getElapsedTime() * 0.2) * 0.05;
   });
 
+  if (!clonedScene) return null;
+
   return (
-    <Center>
-      <group scale={5} rotation={[0, 1, 0]}>
-        {Array.from({ length: 4 }, (_, index) => (
-          <mesh
-            key={index}
-            ref={(el) => {
-              if (el && !ringsRef.current.includes(el)) {
-                ringsRef.current.push(el);
-                // Original position assignment
-                el.position.set(...position);
-              }
-            }}
-          >
-            {/* Keep original geometry exactly as is */}
-            <torusGeometry args={[(index + 1) * 0.5, 0.1]} />
-            <meshMatcapMaterial matcap={texture} toneMapped={false} />
-          </mesh>
-        ))}
+    <Float
+      speed={3}
+      rotationIntensity={1.2}
+      floatIntensity={2.5}
+      floatingRange={[-0.6, 0.6]}
+    >
+      <group
+        ref={groupRef}
+        rotation={[0, 1, Math.PI / 8]} // Original side-to-side tilt
+        {...props}
+      >
+        <primitive object={clonedScene} />
       </group>
-    </Center>
+    </Float>
   );
 };
 
-export default memo(Rings);
+// Preload the model for better performance
+useGLTF.preload("/models/react_logo.glb");
+
+export default memo(ReactLogo);
