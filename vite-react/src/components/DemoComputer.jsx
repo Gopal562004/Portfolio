@@ -241,7 +241,7 @@
 
 import { useRef, useEffect, useState, useMemo, memo } from "react";
 import { useGLTF } from "@react-three/drei";
-import * as THREE from "three";
+//import * as THREE from "three";
 
 const DemoComputer = ({ videoSrc }) => {
   const group = useRef();
