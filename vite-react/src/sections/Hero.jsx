@@ -291,7 +291,7 @@ const Hero = () => {
           </button>
 
           <a
-            href="https://drive.google.com/file/d/160yL-oCZ6zyyvlSA63ZHLhPpejpl7cUu/view?usp=sharing"
+            href="https://drive.google.com/file/d/11E-4BRmgXWW-fohmt75UAX6wZvZ6tejd/view?usp=sharing"
             target="_blank"
             rel="noopener noreferrer"
             className="px-6 py-3 border-2 border-gray-700 text-gray-300 font-semibold rounded-xl hover:border-gray-600 hover:text-white hover:bg-gray-800/50 transition-all duration-300 hover:scale-105 text-center"
