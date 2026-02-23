@@ -2535,7 +2535,7 @@ const About = () => {
                   </button>
 
                   <a
-                    href="https://drive.google.com/file/d/160yL-oCZ6zyyvlSA63ZHLhPpejpl7cUu/view?usp=sharing"
+                    href="https://drive.google.com/file/d/11E-4BRmgXWW-fohmt75UAX6wZvZ6tejd/view?usp=sharing"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="px-4 py-2 bg-gray-800 hover:bg-gray-700 border border-gray-700 rounded-lg text-gray-300 text-sm transition-all flex items-center gap-2"
