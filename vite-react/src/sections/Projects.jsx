@@ -2,6 +2,7 @@ import React, { useState, useRef } from 'react';
 import { motion, AnimatePresence, useScroll, useTransform } from 'framer-motion';
 import { myProjects } from '../constants/index.js';
 import { ExternalLink } from 'lucide-react';
+import CircuitSnake from '../components/CircuitSnake.jsx';
 
 const Projects = () => {
   const [activeIndex, setActiveIndex] = useState(0);
@@ -14,15 +15,39 @@ const Projects = () => {
   });
 
   const yWatermark = useTransform(scrollYProgress, [0, 1], [0, 400]);
+  const matrixY1 = useTransform(scrollYProgress, [0, 1], [-200, 500]);
+  const matrixY2 = useTransform(scrollYProgress, [0, 1], [400, -300]);
+  const matrixY3 = useTransform(scrollYProgress, [0, 1], [-100, 600]);
+  
+  const binaryString = "01001011 01100101 01111001 01000100 01100001 01110100 01100001 ".repeat(100);
 
   return (
     <section id="work" ref={containerRef} className="relative w-full py-32 px-5 md:px-10 bg-surface border-b-2 border-white/20 overflow-hidden">
       <motion.div 
         style={{ y: yWatermark }}
-        className="absolute top-0 right-10 text-[20rem] font-display font-bold text-white/[0.02] leading-none pointer-events-none select-none"
+        className="absolute top-0 right-10 text-[20rem] font-display font-bold text-white/[0.02] leading-none pointer-events-none select-none z-0"
       >
         02
       </motion.div>
+
+      {/* Data Matrix Background Story */}
+      <motion.div style={{ y: matrixY1 }} className="absolute top-[-50%] left-[5%] w-8 text-lg font-mono leading-none break-all opacity-[0.02] text-white pointer-events-none z-0">
+        {binaryString}
+      </motion.div>
+      <motion.div style={{ y: matrixY2 }} className="absolute top-[-50%] left-[50%] w-12 text-2xl font-mono leading-none break-all opacity-[0.02] text-white pointer-events-none z-0">
+        {binaryString}
+      </motion.div>
+      <motion.div style={{ y: matrixY3 }} className="absolute top-[-50%] right-[15%] w-6 text-sm font-mono leading-none break-all opacity-[0.02] text-accent pointer-events-none z-0">
+        {binaryString}
+      </motion.div>
+
+      {/* Projects Circuit Snake */}
+      <CircuitSnake 
+        scrollYProgress={scrollYProgress} 
+        path="M 20 0 L 20 30 L 80 30 L 80 70 L 40 70 L 40 100" 
+        color="#00f6ff" 
+        width={3} 
+      />
 
       <div className="max-w-7xl mx-auto relative z-10">
         <h2 className="text-5xl md:text-7xl font-display font-bold uppercase tracking-tighter flex items-center gap-6 mb-16">

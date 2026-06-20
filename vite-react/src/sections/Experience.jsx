@@ -1,6 +1,8 @@
 import React, { useRef } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { workExperiences } from '../constants/index.js';
+import { Server } from 'lucide-react';
+import CircuitSnake from '../components/CircuitSnake.jsx';
 
 const Experience = () => {
   const containerRef = useRef(null);
@@ -12,16 +14,34 @@ const Experience = () => {
 
   const yWatermark = useTransform(scrollYProgress, [0, 1], [0, 400]);
   const scaleY = useTransform(scrollYProgress, [0.1, 0.9], [0, 1]);
+  const serverX1 = useTransform(scrollYProgress, [0, 1], [-300, 100]);
+  const serverX2 = useTransform(scrollYProgress, [0, 1], [300, -100]);
 
   return (
     <section ref={containerRef} className="relative w-full py-32 px-5 md:px-10 bg-background border-b-2 border-white/20 overflow-hidden">
       
       <motion.div 
         style={{ y: yWatermark }}
-        className="absolute top-0 right-10 text-[20rem] font-display font-bold text-white/[0.02] leading-none pointer-events-none select-none"
+        className="absolute top-0 right-10 text-[20rem] font-display font-bold text-white/[0.02] leading-none pointer-events-none select-none z-0"
       >
         03
       </motion.div>
+
+      {/* Server Rack Background Story */}
+      <motion.div style={{ x: serverX1 }} className="absolute top-[20%] left-[-10%] opacity-[0.03] pointer-events-none z-0">
+        <Server size={600} strokeWidth={1} />
+      </motion.div>
+      <motion.div style={{ x: serverX2 }} className="absolute bottom-[20%] right-[-5%] opacity-[0.03] pointer-events-none z-0">
+        <Server size={500} strokeWidth={1} />
+      </motion.div>
+
+      {/* Experience Circuit Snake */}
+      <CircuitSnake 
+        scrollYProgress={scrollYProgress} 
+        path="M 80 0 L 80 40 L 15 40 L 15 80 L 50 80 L 50 100" 
+        color="#ffffff" 
+        width={3} 
+      />
 
       <div className="max-w-4xl mx-auto relative z-10">
         <h2 className="text-5xl md:text-7xl font-display font-bold uppercase tracking-tighter flex items-center gap-6 mb-20">

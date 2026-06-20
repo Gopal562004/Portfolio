@@ -1,5 +1,6 @@
 import React, { useState, useRef } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
+import CircuitSnake from '../components/CircuitSnake.jsx';
 
 const Contact = () => {
   const [form, setForm] = useState({ name: '', email: '', message: '' });
@@ -29,16 +30,34 @@ const Contact = () => {
   });
 
   const yWatermark = useTransform(scrollYProgress, [0, 1], [0, 400]);
+  const ringScale1 = useTransform(scrollYProgress, [0, 1], [0.5, 2.5]);
+  const ringScale2 = useTransform(scrollYProgress, [0, 1], [0.8, 3.5]);
+  const ringScale3 = useTransform(scrollYProgress, [0, 1], [1, 5]);
 
   return (
     <section id="contact" ref={containerRef} className="relative w-full py-32 px-5 md:px-10 bg-background overflow-hidden border-b-2 border-white/20">
       
       <motion.div 
         style={{ y: yWatermark }}
-        className="absolute top-0 right-10 text-[20rem] font-display font-bold text-white/[0.02] leading-none pointer-events-none select-none"
+        className="absolute top-0 right-10 text-[20rem] font-display font-bold text-white/[0.02] leading-none pointer-events-none select-none z-0"
       >
         04
       </motion.div>
+
+      {/* Radar Ping Background Story */}
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full pointer-events-none z-0 flex items-center justify-center">
+        <motion.div style={{ scale: ringScale1 }} className="absolute w-[400px] h-[400px] rounded-full border-[16px] border-accent opacity-[0.03]" />
+        <motion.div style={{ scale: ringScale2 }} className="absolute w-[600px] h-[600px] rounded-full border-[4px] border-white opacity-[0.03]" />
+        <motion.div style={{ scale: ringScale3 }} className="absolute w-[800px] h-[800px] rounded-full border-[2px] border-accent opacity-[0.03]" />
+      </div>
+
+      {/* Contact Circuit Snake */}
+      <CircuitSnake 
+        scrollYProgress={scrollYProgress} 
+        path="M 50 0 L 50 20 L 80 20 L 80 60 L 50 60 L 50 100" 
+        color="#e11d48" 
+        width={3} 
+      />
 
       <div className="max-w-5xl mx-auto relative z-10">
         <h2 className="text-5xl md:text-7xl font-display font-bold uppercase tracking-tighter flex items-center gap-6 mb-16">

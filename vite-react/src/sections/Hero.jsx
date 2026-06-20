@@ -1,5 +1,6 @@
 import React, { useRef } from 'react';
 import { motion, useScroll, useTransform, useMotionValue, useSpring } from 'framer-motion';
+import CircuitSnake from '../components/CircuitSnake.jsx';
 
 const Hero = () => {
   const ref = useRef(null);
@@ -46,7 +47,21 @@ const Hero = () => {
             backgroundSize: '100px 100px'
           }}
         />
+        
+        {/* Floating Code Symbols (Hero Story) */}
+        <motion.div style={{ y: useTransform(scrollYProgress, [0, 1], [0, -300]) }} className="absolute top-[20%] left-[10%] text-white/5 font-mono text-8xl font-black">{"</>"}</motion.div>
+        <motion.div style={{ y: useTransform(scrollYProgress, [0, 1], [0, 400]) }} className="absolute top-[60%] right-[15%] text-accent/10 font-mono text-9xl font-black">{"{ }"}</motion.div>
+        <motion.div style={{ y: useTransform(scrollYProgress, [0, 1], [0, -150]) }} className="absolute bottom-[10%] left-[30%] text-white/5 font-mono text-7xl font-black">{"//"}</motion.div>
+        <motion.div style={{ y: useTransform(scrollYProgress, [0, 1], [0, 250]) }} className="absolute top-[10%] right-[40%] text-white/5 font-mono text-[10rem] font-black">{"[]"}</motion.div>
       </motion.div>
+
+      {/* Hero Circuit Snake */}
+      <CircuitSnake 
+        scrollYProgress={scrollYProgress} 
+        path="M 5 0 L 5 40 L 40 40 L 40 80 L 10 80 L 10 100" 
+        color="#ffffff" 
+        width={3} 
+      />
 
       <motion.div style={{ opacity }} className="relative z-10 w-full max-w-7xl grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
         

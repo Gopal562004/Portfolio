@@ -1,6 +1,8 @@
 import React, { useRef } from 'react';
 import { motion, useInView, useScroll, useTransform } from 'framer-motion';
 import { education, techStack, achievements } from '../constants/index.js';
+import { Cpu } from 'lucide-react';
+import CircuitSnake from '../components/CircuitSnake.jsx';
 
 const About = () => {
   const containerRef = useRef(null);
@@ -19,10 +21,30 @@ const About = () => {
       
       <motion.div 
         style={{ y: yWatermark }}
-        className="absolute top-0 right-10 text-[20rem] font-display font-bold text-white/[0.02] leading-none pointer-events-none select-none"
+        className="absolute top-0 right-10 text-[20rem] font-display font-bold text-white/[0.02] leading-none pointer-events-none select-none z-0"
       >
         01
       </motion.div>
+
+      {/* CPU Processor Background Story */}
+      <motion.div 
+        style={{ 
+          y: useTransform(scrollYProgress, [0, 1], [-100, 300]),
+          rotate: useTransform(scrollYProgress, [0, 1], [-15, 15]),
+          scale: useTransform(scrollYProgress, [0, 1], [0.8, 1.2])
+        }}
+        className="absolute top-[20%] left-[-10%] opacity-[0.03] pointer-events-none z-0"
+      >
+        <Cpu size={800} strokeWidth={1} />
+      </motion.div>
+
+      {/* About Circuit Snake */}
+      <CircuitSnake 
+        scrollYProgress={scrollYProgress} 
+        path="M 90 0 L 90 20 L 50 20 L 50 60 L 20 60 L 20 100" 
+        color="#e11d48" 
+        width={3} 
+      />
 
       <div className="max-w-7xl mx-auto" ref={containerRef}>
         <motion.div
