@@ -13,14 +13,6 @@ const CircuitSnake = ({ scrollYProgress, path, color = "#00f6ff", width = 2 }) =
   return (
     <svg className="absolute inset-0 w-full h-full pointer-events-none z-10" preserveAspectRatio="none" viewBox="0 0 100 100">
       
-      {/* Glow Filter for the drawing line */}
-      <defs>
-        <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
-          <feGaussianBlur stdDeviation="1.5" result="blur" />
-          <feComposite in="SourceGraphic" in2="blur" operator="over" />
-        </filter>
-      </defs>
-
       {/* Background Track / Circuit Line */}
       <path
         d={path}
@@ -31,14 +23,13 @@ const CircuitSnake = ({ scrollYProgress, path, color = "#00f6ff", width = 2 }) =
         vectorEffect="non-scaling-stroke"
       />
 
-      {/* The Drawing Progress Bar */}
+      {/* The Drawing Progress Bar (Removed SVG filter for 60fps performance) */}
       <motion.path
         d={path}
         stroke={color}
         strokeWidth={width + 1}
         fill="none"
         vectorEffect="non-scaling-stroke"
-        filter="url(#glow)"
         style={{
           pathLength: drawProgress
         }}
