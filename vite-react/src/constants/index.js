@@ -162,7 +162,7 @@ export const workExperiences = [
     id: 2,
     name: "AI4SEE PVT LTD",
     pos: "Website Development Intern",
-    duration: "Dec 2025",
+    duration: "Dec 2025 – Apr 2026",
     title: "Full-stack development with React/Next.js and Node.js APIs.",
     icon: "/assets/frontend.svg",
     animation: "clapping",
