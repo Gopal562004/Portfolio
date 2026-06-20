@@ -1,40 +1,23 @@
+import React from 'react';
+
 const Footer = () => {
   return (
-    <footer className="c-space pt-7 pb-3 border-t border-black-300 flex justify-between items-center flex-wrap gap-5 select-none">
-      <div className="text-white-500 flex gap-2">
-        <p>Terms & Conditions</p>
-        <p>|</p>
-        <p>Privacy Policy</p>
+    <footer className="w-full px-5 md:px-10 py-8 bg-background flex flex-col md:flex-row justify-between items-center text-xs font-mono text-secondary uppercase tracking-widest select-none">
+      <div className="flex items-center gap-4 mb-4 md:mb-0">
+        <p>SYSTEM.COPYRIGHT © 2026 GOPAL GAWAS</p>
       </div>
 
-      <div className="flex gap-3 ">
-        <div className="social-icon cursor-pointer">
-          <img
-            src="https://avatars1.githubusercontent.com/u/9919?v=4"
-            alt="github"
-            className="w-1/2 h-1/2"
-            draggable={false}
-          />
-        </div>
-        <div className="social-icon cursor-pointer">
-          <img
-            src="https://cdn.pixabay.com/photo/2015/03/10/17/30/twitter-667462_640.png"
-            alt="twitter"
-            draggable={false}
-            className="w-1/2 h-1/2"
-          />
-        </div>
-        <div className="social-icon cursor-pointer">
-          <img
-            src="https://upload.wikimedia.org/wikipedia/commons/9/95/Instagram_logo_2022.svg"
-            alt="instagram"
-            draggable={false}
-            className="w-1/2 h-1/2"
-          />
-        </div>
+      <div className="flex gap-6">
+        <a href="https://github.com/Gopal562004" target="_blank" rel="noreferrer" className="hover:text-accent cursor-pointer transition-colors border-b border-transparent hover:border-accent">
+          GITHUB
+        </a>
+        <a href="https://www.linkedin.com/in/gopal-gawas-878641269" target="_blank" rel="noreferrer" className="hover:text-accent cursor-pointer transition-colors border-b border-transparent hover:border-accent">
+          LINKEDIN
+        </a>
+        <a href="https://twitter.com" target="_blank" rel="noreferrer" className="hover:text-accent cursor-pointer transition-colors border-b border-transparent hover:border-accent">
+          X / TWITTER
+        </a>
       </div>
-
-      <p className="text-white-500">© 2025 Gopal Gawas. All rights reserved.</p>
     </footer>
   );
 };

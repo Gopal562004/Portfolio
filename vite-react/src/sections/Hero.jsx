@@ -1,92 +1,138 @@
-import React, { Suspense, useState } from "react";
-import { Canvas } from "@react-three/fiber";
-import { OrbitControls } from "@react-three/drei";
-import { useSpring, animated } from "react-spring";
-import HackerRoom from "../components/HackerRoom";
-import CanvasLoader from "../components/CanvasLoader";
-import Target from "../components/Target";
-import { Atom } from "../components/AtomEffect";
-import RobotModel from "../components/RobotModel";
-import ReactLogo from "../components/ReactLogo";
-import Rings from "../components/Rings";
-// import { EffectComposer, Bloom } from "@react-three/postprocessing";
+import React, { useRef } from 'react';
+import { motion, useScroll, useTransform, useMotionValue, useSpring } from 'framer-motion';
 
 const Hero = () => {
-  const [isHovered, setIsHovered] = useState(false); // ✅ define this at the top
-
-  const { position } = useSpring({
-    from: { position: [0, 2, 5] },
-    to: { position: [0, 2, 8] },
-    config: { duration: 1500 },
+  const ref = useRef(null);
+  const { scrollYProgress } = useScroll({
+    target: ref,
+    offset: ["start start", "end start"],
   });
 
+  const y1 = useTransform(scrollYProgress, [0, 1], [0, 200]);
+  const y2 = useTransform(scrollYProgress, [0, 1], [0, -100]);
+  const opacity = useTransform(scrollYProgress, [0, 0.8], [1, 0]);
+
+  // Mouse Parallax
+  const mouseX = useMotionValue(0);
+  const mouseY = useMotionValue(0);
+  
+  const springX = useSpring(mouseX, { stiffness: 50, damping: 20 });
+  const springY = useSpring(mouseY, { stiffness: 50, damping: 20 });
+
+  const parallaxX = useTransform(springX, [-500, 500], [-40, 40]);
+  const parallaxY = useTransform(springY, [-500, 500], [-40, 40]);
+
+  // Grid moves slightly opposite to the mouse
+  const gridX = useTransform(springX, [-500, 500], [30, -30]);
+  const gridY = useTransform(springY, [-500, 500], [30, -30]);
+
+  const handleMouseMove = (e) => {
+    const centerX = window.innerWidth / 2;
+    const centerY = window.innerHeight / 2;
+    mouseX.set(e.clientX - centerX);
+    mouseY.set(e.clientY - centerY);
+  };
+
   return (
-    <section className="min-h-screen w-full flex flex-col relative select-none">
-      <div className="w-full mx-auto flex flex-col sm:mt-36 mt-20 gap-3 z-10">
-        <h1 className="text-2xl sm:text-3xl font-medium text-white text-center">
-          Hello, I'm Gopal <span className="waving-hand">👋</span>
-        </h1>
-        <p className="hero_tag text-gray_gradient">
-          Crafting Unique Digital Experiences
-        </p>
-        <p className="text-lg sm:text-xl text-gray-300 text-center">
-          Focused on building innovative digital solutions with a passion for
-          clean code and design.
-        </p>
+    <section id="home" ref={ref} onMouseMove={handleMouseMove} className="relative w-full min-h-[100dvh] flex items-center justify-center px-5 md:px-10 overflow-hidden bg-background border-b-2 border-white/20">
+      
+      {/* Aggressive Grid Background Parallax */}
+      <motion.div style={{ x: gridX, y: gridY }} className="absolute inset-0 pointer-events-none">
+        <motion.div 
+          className="absolute inset-[-100px] opacity-10"
+          style={{
+            y: y1,
+            backgroundImage: 'linear-gradient(rgba(255, 255, 255, 1) 1px, transparent 1px), linear-gradient(90deg, rgba(255, 255, 255, 1) 1px, transparent 1px)',
+            backgroundSize: '100px 100px'
+          }}
+        />
+      </motion.div>
+
+      <motion.div style={{ opacity }} className="relative z-10 w-full max-w-7xl grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
+        
+        {/* Left Column: Bold Typography */}
+        <div className="flex flex-col items-start gap-6">
+          <motion.div
+            initial={{ scaleX: 0 }}
+            animate={{ scaleX: 1 }}
+            transition={{ duration: 0.8, ease: "circOut" }}
+            className="h-2 w-24 bg-accent origin-left"
+          />
+          
+          <motion.h1
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+            className="text-5xl sm:text-6xl md:text-8xl lg:text-[10rem] font-display font-bold uppercase leading-[0.85] tracking-tighter"
+          >
+            Gopal <br />
+            <span className="text-transparent" style={{ WebkitTextStroke: '2px white' }}>Gawas</span>
+          </motion.h1>
+
+          <motion.p
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 1, delay: 0.5 }}
+            className="text-lg md:text-2xl font-mono text-secondary max-w-md border-l-4 border-accent pl-4 mb-6"
+          >
+            Full-Stack Developer.
+            <br />
+            System Architect.
+            <br />
+            Creative Coder.
+          </motion.p>
+
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.7 }}
+          >
+            <a 
+              href="https://drive.google.com/file/d/17HvXd4wa6CF2A2pn_CSoU0ozENX2egTd/view" 
+              target="_blank" 
+              rel="noreferrer"
+              className="brutalist-button"
+            >
+              View Resume
+            </a>
+          </motion.div>
+        </div>
+
+        {/* Right Column: Abstract Geometric Parallax */}
+        <motion.div style={{ y: y2 }} className="relative h-[400px] w-full flex items-center justify-center hidden md:flex">
+          <motion.div 
+            style={{ x: parallaxX, y: parallaxY }} 
+            whileHover={{ scale: 1.05 }}
+            className="relative w-80 h-80 cursor-crosshair"
+          >
+            {/* Base Square */}
+            <motion.div 
+              animate={{ rotate: 360 }}
+              transition={{ duration: 40, repeat: Infinity, ease: "linear" }}
+              className="absolute inset-0 border-2 border-white/30"
+            />
+            {/* Inner Red Square */}
+            <motion.div 
+              animate={{ rotate: -360 }}
+              transition={{ duration: 30, repeat: Infinity, ease: "linear" }}
+              className="absolute inset-10 border-4 border-accent shadow-sharp"
+            />
+            {/* Center Fill */}
+            <motion.div 
+              animate={{ scale: [1, 1.2, 1], rotate: [0, 90, 180] }}
+              transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
+              className="absolute inset-24 bg-white shadow-sharp-white"
+            />
+          </motion.div>
+        </motion.div>
+      </motion.div>
+
+      {/* Brutalist Scroll Indicator */}
+      <div className="absolute bottom-10 right-10 flex flex-col items-end gap-2 text-white font-mono text-xs uppercase tracking-widest mix-blend-difference">
+        <span>Scroll</span>
+        <div className="w-8 h-1 bg-white" />
       </div>
 
-      {/* Canvas container centered and sized */}
-      <div className="w-full flex justify-center items-center">
-        <div
-          className="w-[500px] h-[400px]"
-          onMouseEnter={() => setIsHovered(true)}
-          onMouseLeave={() => setIsHovered(false)}
-        >
-          {/* <EffectComposer>
-            <Bloom
-              luminanceThreshold={0.2}
-              luminanceSmoothing={0.9}
-              intensity={1.5}
-            />
-          </EffectComposer> */}
-
-          <Canvas
-            className="w-full h-full"
-            camera={{ position: [120, 150, 180], fov: 75 }}
-          >
-            <ambientLight intensity={0.5} />
-            <directionalLight position={[2, 2, 2]} intensity={1} />
-            <Suspense fallback={<CanvasLoader />}>
-              <OrbitControls enableZoom={false} enabled={isHovered} />
-              <HackerRoom />
-              <group>
-                <Target position={[-35, -65, 100]} scale={20} />
-                {/* <Atom scale={20} /> */}
-                <RobotModel />
-                <ReactLogo scale={10} position={[80, 65, -50]} />
-                <Rings />
-              </group>
-            </Suspense>
-          </Canvas>
-        </div>
-      </div>
-      <div className="flex justify-center items-center cursor-pointer select-none">
-        <div className="flex items-center gap-3 px-6 py-3 bg-[#1a1a1a] text-[#00f6ff] font-mono text-sm md:text-base rounded-lg border border-[#00f6ff]/30 shadow-lg shadow-[#00f6ff]/10 animate-pulse hover:shadow-[#00f6ff]/50 transition-all duration-300">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            className="w-5 h-5 text-[#00f6ff] animate-spin-slow"
-            viewBox="0 0 20 20"
-            fill="currentColor"
-          >
-            <path
-              fillRule="evenodd"
-              d="M10 18a8 8 0 100-16 8 8 0 000 16zm.707-11.293a1 1 0 00-1.414 0L7 9l2.293 2.293a1 1 0 001.414-1.414L9.414 9l1.293-1.293a1 1 0 000-1.414z"
-              clipRule="evenodd"
-            />
-          </svg>
-          Let's Work Together
-        </div>
-      </div>
     </section>
   );
 };

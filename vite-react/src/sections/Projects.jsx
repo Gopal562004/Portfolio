@@ -1,136 +1,124 @@
-import { Suspense, useState } from "react";
-import { Canvas } from "@react-three/fiber";
-import { Center, OrbitControls } from "@react-three/drei";
-import { FaArrowRight } from "react-icons/fa";
-import { FaArrowLeft } from "react-icons/fa";
-import { myProjects } from "../constants/index.js";
-// import CanvasLoader from "../components/Loading.jsx";
-import DemoComputer from "../components/DemoComputer.jsx";
-
-const projectCount = myProjects.length;
+import React, { useState, useRef } from 'react';
+import { motion, AnimatePresence, useScroll, useTransform } from 'framer-motion';
+import { myProjects } from '../constants/index.js';
+import { ExternalLink } from 'lucide-react';
 
 const Projects = () => {
-  const [selectedProjectIndex, setSelectedProjectIndex] = useState(0);
+  const [activeIndex, setActiveIndex] = useState(0);
+  const activeProject = myProjects[activeIndex];
+  const containerRef = useRef(null);
 
-  const handleNavigation = (direction) => {
-    setSelectedProjectIndex((prevIndex) => {
-      if (direction === "previous") {
-        return prevIndex === 0 ? projectCount - 1 : prevIndex - 1;
-      } else {
-        return prevIndex === projectCount - 1 ? 0 : prevIndex + 1;
-      }
-    });
-  };
+  const { scrollYProgress } = useScroll({
+    target: containerRef,
+    offset: ["start end", "end start"]
+  });
 
-  const currentProject = myProjects[selectedProjectIndex];
+  const yWatermark = useTransform(scrollYProgress, [0, 1], [0, 400]);
 
   return (
-    <section className="c-space my-20 select-none" id="work">
-      <p className="head-text">My Selected Work</p>
+    <section id="work" ref={containerRef} className="relative w-full py-32 px-5 md:px-10 bg-surface border-b-2 border-white/20 overflow-hidden">
+      <motion.div 
+        style={{ y: yWatermark }}
+        className="absolute top-0 right-10 text-[20rem] font-display font-bold text-white/[0.02] leading-none pointer-events-none select-none"
+      >
+        02
+      </motion.div>
 
-      <div className="grid lg:grid-cols-2 grid-cols-1 mt-12 gap-5 w-full">
-        {/* Left Panel */}
-        <div className="flex flex-col gap-5 relative sm:p-10 py-10 px-5 shadow-2xl shadow-black-200">
-          <div className="absolute top-0 right-0">
-            <img
-              src={currentProject.spotlight}
-              alt="spotlight"
-              draggable={false}
-              className="w-full h-32 object-cover rounded-xl "
-            />
-          </div>
+      <div className="max-w-7xl mx-auto relative z-10">
+        <h2 className="text-5xl md:text-7xl font-display font-bold uppercase tracking-tighter flex items-center gap-6 mb-16">
+          <span className="w-16 h-2 bg-accent" />
+          Executables
+        </h2>
 
-          <div
-            className="p-3 backdrop-filter backdrop-blur-3xl w-fit rounded-lg"
-            style={currentProject.logoStyle}
-          >
-            <img
-              className="w-10 h-10 shadow-sm"
-              src={currentProject.logo}
-              draggable={false}
-              alt="logo"
-            />
-          </div>
-
-          <div className="flex flex-col gap-5 text-white-600 my-5 transition-opacity duration-500 ease-in opacity-100">
-            <p className="text-white text-2xl font-semibold">
-              {currentProject.title}
-            </p>
-            <p>{currentProject.desc}</p>
-            <p>{currentProject.subdesc}</p>
-          </div>
-
-          <div className="flex items-center justify-between flex-wrap gap-5">
-            <div className="flex items-center gap-3">
-              {currentProject.tags.map((tag, index) => (
-                <div key={index} className="tech-logo">
-                  <img src={tag.path} alt={tag.name} draggable={false} />
-                </div>
-              ))}
+        <div className="flex flex-col lg:flex-row gap-10">
+          
+          {/* Left Column: Project List */}
+          <div className="w-full lg:w-1/3 flex flex-col gap-2">
+            <div className="lg:hidden text-[10px] text-accent font-mono uppercase tracking-widest flex items-center justify-between mb-1 px-1">
+              <span>← Swipe</span>
+              <span>More →</span>
             </div>
-
-            <a
-              className="flex items-center gap-2 cursor-pointer text-white-600"
-              href={currentProject.href}
-              target="_blank"
-              rel="noreferrer"
-            >
-              <p>Check Live Site</p>
-              <img
-                src="../../public/images/logo/arrow-up.png"
-                alt="arrow"
-                draggable={false}
-                className="w-3 h-3"
-              />
-            </a>
+            <div className="flex lg:flex-col gap-2 border-b-2 lg:border-b-0 lg:border-r-2 border-white/10 pb-4 lg:pb-0 pr-0 lg:pr-6 overflow-x-auto snap-x hide-scrollbar w-full">
+            {myProjects.map((project, index) => {
+              const isActive = index === activeIndex;
+              return (
+                <button
+                  key={index}
+                  onClick={() => setActiveIndex(index)}
+                  className={`flex-none lg:w-full text-left px-6 py-4 font-mono text-sm uppercase tracking-wider transition-all border-2 snap-start whitespace-nowrap lg:whitespace-normal ${
+                    isActive 
+                      ? 'bg-accent text-white border-accent shadow-sharp' 
+                      : 'bg-transparent text-secondary border-transparent hover:border-white/20 hover:text-white'
+                  }`}
+                >
+                  <span className="mr-3 opacity-50 hidden lg:inline">0{index + 1}.</span>
+                  {project.title.split(' - ')[0]}
+                </button>
+              );
+            })}
+            </div>
           </div>
 
-          <div className="flex justify-between items-center mt-7">
-            <button
-              className="arrow-btn"
-              onClick={() => handleNavigation("previous")}
-            >
-              <FaArrowLeft className="text-white" />
-            </button>
+          {/* Right Column: Project Viewer */}
+          <div className="w-full lg:w-2/3 h-full min-h-[500px]">
+            <AnimatePresence mode="wait">
+              <motion.div
+                key={activeIndex}
+                initial={{ opacity: 0, x: 20 }}
+                animate={{ opacity: 1, x: 0 }}
+                exit={{ opacity: 0, x: -20 }}
+                transition={{ duration: 0.3 }}
+                className="brutalist-card p-8 md:p-12 h-full flex flex-col justify-between shadow-sharp"
+              >
+                <div>
+                  <div className="flex flex-col md:flex-row md:items-center justify-between gap-6 mb-8 border-b-2 border-white/10 pb-8">
+                    <div className="flex items-center gap-6">
+                      <div className="w-16 h-16 border-2 border-white bg-background p-2 shrink-0">
+                        <img src={activeProject.logo} alt="logo" className="w-full h-full object-contain" />
+                      </div>
+                      <div>
+                        <h3 className="text-2xl md:text-4xl font-display font-bold uppercase mb-2">
+                          {activeProject.title.split(' - ')[0]}
+                        </h3>
+                        <p className="text-accent font-mono text-xs uppercase tracking-widest">
+                          {activeProject.title.split(' - ')[1] || 'Web Application'}
+                        </p>
+                      </div>
+                    </div>
+                    
+                    <a 
+                      href={activeProject.href} 
+                      target="_blank" 
+                      rel="noreferrer"
+                      className="brutalist-button text-xs whitespace-nowrap self-start md:self-auto"
+                    >
+                      Init Sequence <ExternalLink size={14} className="ml-2" />
+                    </a>
+                  </div>
 
-            <button
-              className="arrow-btn"
-              onClick={() => handleNavigation("next")}
-            >
-              <FaArrowRight className="text-white" />
-            </button>
+                  <p className="text-lg text-white font-medium leading-relaxed mb-4">
+                    {activeProject.desc}
+                  </p>
+                  <p className="text-secondary font-mono text-sm leading-relaxed mb-8">
+                    {activeProject.subdesc}
+                  </p>
+                </div>
+
+                <div>
+                  <h4 className="text-xs font-mono text-secondary uppercase tracking-widest mb-4">Dependencies</h4>
+                  <div className="flex flex-wrap gap-3">
+                    {activeProject.tags.map((tag) => (
+                      <div key={tag.id} className="border-2 border-white/20 px-3 py-1.5 flex items-center gap-2 bg-background">
+                        {tag.path && <img src={tag.path} alt={tag.name} className="w-4 h-4 grayscale" />}
+                        <span className="text-xs font-mono font-bold uppercase text-white">{tag.name}</span>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </motion.div>
+            </AnimatePresence>
           </div>
-        </div>
 
-        {/* Right Panel */}
-        <div className="border border-black-300 bg-black-200 rounded-lg h-96 md:h-full">
-          <Canvas
-            shadows
-            camera={{ position: [0, 2, 20], fov: 45 }} // Center front view
-            gl={{ preserveDrawingBuffer: true }}
-          >
-            {/* Lights */}
-            <ambientLight intensity={0.6} />
-            <directionalLight position={[10, 10, 5]} intensity={1} castShadow />
-
-            {/* 3D Model */}
-            <Suspense fallback={null}>
-              <Center>
-                <group scale={3} position={[1, -1, 0]} rotation={[-1.4, -0.05, -0.3]}>
-                  <DemoComputer videoSrc={currentProject.texture} />
-                </group>
-              </Center>
-            </Suspense>
-
-            {/* Lock vertical rotation */}
-            <OrbitControls
-              enableZoom={false}
-              enablePan={false}
-              rotateSpeed={0.8}
-              minPolarAngle={Math.PI / 2}
-              maxPolarAngle={Math.PI / 2}
-            />
-          </Canvas>
         </div>
       </div>
     </section>
