@@ -11,7 +11,6 @@ export default function SmoothScroll({ children }) {
       smooth: true,
       mouseMultiplier: 1,
       smoothTouch: false,
-      touchMultiplier: 2,
     });
 
     function raf(time) {

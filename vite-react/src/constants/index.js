@@ -7,6 +7,26 @@ export const navLinks = [
 
 export const myProjects = [
   {
+    title: "LogNexis - Intelligent API Observability Platform",
+    desc: "LogNexis provides real-time observability, ML-powered anomaly detection, and predictive analytics for every API request, helping you catch issues before users do.",
+    subdesc: "Built with React, Node.js, Python, and WebSockets, it features live log streaming, Real User Monitoring (RUM), and an integrated DB explorer for complete API health control.",
+    href: "https://www.lognexis.online/",
+    texture: "/images/videos/lognexis_demo.mp4",
+    logo: "/images/logo/lognexis_icon.svg",
+    logoStyle: {
+      backgroundColor: "#0F172A",
+      border: "0.2px solid #1E293B",
+      boxShadow: "0px 0px 60px 0px #3B82F64D",
+    },
+    spotlight: "/images/spotlight/lognexis_bg.png",
+    tags: [
+      { id: 1, name: "React.js", path: "/images/logo/react.png" },
+      { id: 2, name: "Node.js", path: "/images/logo/node.png" },
+      { id: 3, name: "MongoDB", path: "/images/logo/mongodb.png" },
+      { id: 4, name: "Python", path: "/images/logo/python.png" },
+    ],
+  },
+  {
     title: "Gradify - AI Career Coach",
     desc: "Gradify is an AI-powered career guidance platform that helps students discover suitable career paths, analyze their skills, and receive personalized learning recommendations.",
     subdesc:

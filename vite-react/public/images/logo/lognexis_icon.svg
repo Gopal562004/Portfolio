@@ -1,0 +1,57 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="100%" height="100%">
+  <defs>
+    <filter id="glow-core" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="2" result="blur" />
+      <feMerge>
+        <feMergeNode in="blur" />
+        <feMergeNode in="SourceGraphic" />
+      </feMerge>
+    </filter>
+    <filter id="glow-path" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="1" result="blur" />
+      <feMerge>
+        <feMergeNode in="blur" />
+        <feMergeNode in="SourceGraphic" />
+      </feMerge>
+    </filter>
+  </defs>
+
+  <!-- Move origin to (30, 50) -->
+  <g transform="translate(30, 50)">
+    <!-- Outer faint rings pulsing -->
+    <circle cx="0" cy="0" r="14" fill="none" stroke="#6366f1" stroke-width="0.75" stroke-dasharray="2,2" opacity="0">
+      <animate attributeName="r" values="8;30" dur="2.5s" repeatCount="indefinite"/>
+      <animate attributeName="opacity" values="0.6;0" dur="2.5s" repeatCount="indefinite"/>
+    </circle>
+    <circle cx="0" cy="0" r="10" fill="none" stroke="#8b5cf6" stroke-width="0.75" opacity="0">
+      <animate attributeName="r" values="4;22" dur="2.5s" repeatCount="indefinite" begin="1.25s"/>
+      <animate attributeName="opacity" values="0.7;0" dur="2.5s" repeatCount="indefinite" begin="1.25s"/>
+    </circle>
+    
+    <!-- Core glowing circle -->
+    <circle cx="0" cy="0" r="12" fill="#6d28d9" filter="url(#glow-core)" opacity="0.9">
+       <animate attributeName="r" values="11; 13; 11" dur="2s" repeatCount="indefinite"/>
+    </circle>
+    <circle cx="0" cy="0" r="8" fill="#7c3aed" />
+    <circle cx="0" cy="0" r="3" fill="#e0e7ff" />
+
+    <!-- Connecting waveform line -->
+    <path 
+      d="M 3 0 L 12 0 L 22 -22 L 34 26 L 42 0 L 52 0" 
+      fill="none" 
+      stroke="#c4b5fd" 
+      stroke-width="3" 
+      stroke-linecap="round" 
+      stroke-linejoin="round"
+      filter="url(#glow-path)"
+    >
+      <animate attributeName="stroke" values="#c4b5fd; #a78bfa; #c4b5fd" dur="2s" repeatCount="indefinite"/>
+    </path>
+    
+    <!-- Moving dot to the right -->
+    <rect x="58" y="-2.5" width="5" height="5" rx="1.5" fill="#ddd6fe" filter="url(#glow-core)">
+       <animate attributeName="opacity" values="0; 1; 0.2; 0" dur="2s" repeatCount="indefinite" />
+       <animateTransform attributeName="transform" type="translate" values="-4 0; 8 0" dur="2s" repeatCount="indefinite"/>
+    </rect>
+  </g>
+</svg>
