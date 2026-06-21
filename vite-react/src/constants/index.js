@@ -8,8 +8,8 @@ export const navLinks = [
 export const myProjects = [
   {
     title: "LogNexis - Intelligent API Observability Platform",
-    desc: "LogNexis provides real-time observability, ML-powered anomaly detection, and predictive analytics for every API request, helping you catch issues before users do.",
-    subdesc: "Built with React, Node.js, Python, and WebSockets, it features live log streaming, Real User Monitoring (RUM), and an integrated DB explorer for complete API health control.",
+    desc: "LogNexis is an Intelligent API Observability Platform focused on comprehensive API request monitoring, performance tracking, and deep analytics.",
+    subdesc: "It majorly provides real-time log streaming, Real User Monitoring (RUM), user behavior insights, and an integrated DB explorer, alongside ML-powered anomaly detection.",
     href: "https://www.lognexis.online/",
     texture: "/images/videos/lognexis_demo.mp4",
     logo: "/images/logo/lognexis_icon.svg",

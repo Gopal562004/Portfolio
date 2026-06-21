@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { motion, AnimatePresence, useScroll, useTransform } from 'framer-motion';
 import { myProjects } from '../constants/index.js';
 import { ExternalLink } from 'lucide-react';
@@ -8,6 +8,42 @@ const Projects = () => {
   const [activeIndex, setActiveIndex] = useState(0);
   const activeProject = myProjects[activeIndex];
   const containerRef = useRef(null);
+  const marqueeRef = useRef(null);
+  const [isPaused, setIsPaused] = useState(false);
+
+  useEffect(() => {
+    let animationId;
+    const scrollContainer = marqueeRef.current;
+    
+    // Only run marquee logic on mobile sizes
+    if (scrollContainer && window.innerWidth < 1024) {
+      // Initialize to middle segment so we can immediately swipe left
+      if (scrollContainer.scrollLeft === 0) {
+        scrollContainer.scrollLeft = scrollContainer.scrollWidth / 3;
+      }
+
+      const step = () => {
+        if (!isPaused) {
+          scrollContainer.scrollLeft += 1; // Speed of auto-scroll
+        }
+        
+        const third = scrollContainer.scrollWidth / 3;
+        
+        // Manual and auto infinite scroll bounds checking
+        if (scrollContainer.scrollLeft >= third * 2) {
+          // If we scroll too far right
+          scrollContainer.scrollLeft -= third;
+        } else if (scrollContainer.scrollLeft <= 0) {
+          // If we scroll too far left (manual swipe left)
+          scrollContainer.scrollLeft += third;
+        }
+        animationId = requestAnimationFrame(step);
+      };
+      animationId = requestAnimationFrame(step);
+    }
+    
+    return () => cancelAnimationFrame(animationId);
+  }, [isPaused]);
 
   const { scrollYProgress } = useScroll({
     target: containerRef,
@@ -58,25 +94,54 @@ const Projects = () => {
         <div className="flex flex-col lg:flex-row gap-10">
           
           {/* Left Column: Project List */}
-          <div className="w-full lg:w-1/3 flex flex-col gap-2">
-            <div className="lg:hidden text-[10px] text-accent font-mono uppercase tracking-widest flex items-center justify-between mb-1 px-1">
-              <span>← Swipe</span>
-              <span>More →</span>
+          <div className="w-full lg:w-1/3 flex flex-col gap-2 overflow-hidden">
+            
+            {/* MOBILE MARQUEE (Hidden on Desktop) */}
+            <div className="lg:hidden relative w-full pb-4 mb-4 mask-edges cursor-pointer">
+              <div 
+                ref={marqueeRef}
+                className="flex w-full overflow-x-auto hide-scrollbar touch-pan-x"
+                onTouchStart={() => setIsPaused(true)}
+                onTouchEnd={() => setIsPaused(false)}
+                onMouseEnter={() => setIsPaused(true)}
+                onMouseLeave={() => setIsPaused(false)}
+              >
+                {[...myProjects, ...myProjects, ...myProjects].map((project, idx) => {
+                  const actualIndex = idx % myProjects.length;
+                  const isActive = actualIndex === activeIndex;
+                  return (
+                    <button
+                      key={idx}
+                      onClick={() => setActiveIndex(actualIndex)}
+                      className={`flex-none mx-2 px-6 py-3 font-mono text-sm uppercase tracking-wider transition-all border-2 whitespace-nowrap ${
+                        isActive 
+                          ? 'bg-accent text-white border-accent shadow-sharp' 
+                          : 'bg-transparent text-secondary border-white/20 hover:text-white hover:border-white/50'
+                      }`}
+                    >
+                      <span className={`mr-2 font-bold opacity-80 ${isActive ? 'text-white' : 'text-accent'}`}>0{actualIndex + 1}.</span>
+                      {project.title.split(' - ')[0]}
+                    </button>
+                  );
+                })}
+              </div>
             </div>
-            <div className="flex lg:flex-col gap-2 border-b-2 lg:border-b-0 lg:border-r-2 border-white/10 pb-4 lg:pb-0 pr-0 lg:pr-6 overflow-x-auto snap-x hide-scrollbar w-full">
+
+            {/* DESKTOP LIST (Hidden on Mobile) */}
+            <div className="hidden lg:flex flex-col gap-2 border-r-2 border-white/10 pr-6 w-full">
             {myProjects.map((project, index) => {
               const isActive = index === activeIndex;
               return (
                 <button
                   key={index}
                   onClick={() => setActiveIndex(index)}
-                  className={`flex-none lg:w-full text-left px-6 py-4 font-mono text-sm uppercase tracking-wider transition-all border-2 snap-start whitespace-nowrap lg:whitespace-normal ${
+                  className={`w-full text-left px-6 py-4 font-mono text-sm uppercase tracking-wider transition-all border-2 ${
                     isActive 
                       ? 'bg-accent text-white border-accent shadow-sharp' 
                       : 'bg-transparent text-secondary border-transparent hover:border-white/20 hover:text-white'
                   }`}
                 >
-                  <span className="mr-3 opacity-50 hidden lg:inline">0{index + 1}.</span>
+                  <span className="mr-3 opacity-50">0{index + 1}.</span>
                   {project.title.split(' - ')[0]}
                 </button>
               );
