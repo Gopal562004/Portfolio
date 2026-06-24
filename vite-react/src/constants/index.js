@@ -111,7 +111,7 @@ export const myProjects = [
     title: "Makaan4U - Real Estate Property Finder",
     desc: "Makaan4U is a real estate web platform that allows users to search, list, and manage properties for rent or sale, featuring location-based search and modern UI.",
     subdesc: "Developed using the MERN stack, Makaan4U simplifies property discovery and management with dynamic filtering, responsive layouts, and secure user authentication.",
-    href: "https://makaan4u.vercel.app/",
+    href: "https://makaan4u-clean.vercel.app/",
     texture: "/images/videos/makaan4u_demo.mp4",
     logo: "/images/logo/makaan4u.webp",
     logoStyle: {
