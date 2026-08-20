@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from "react";
+import { Analytics } from "@vercel/analytics/react";
+
 import Navbar from "./sections/Navbar.jsx";
 import Hero from "./sections/Hero.jsx";
 import About from "./sections/About.jsx";
@@ -14,7 +16,7 @@ const App = () => {
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    const timeout = setTimeout(() => setIsLoading(false), 1000); // 1 second
+    const timeout = setTimeout(() => setIsLoading(false), 1000);
     return () => clearTimeout(timeout);
   }, []);
 
@@ -24,15 +26,18 @@ const App = () => {
     <SmoothScroll>
       <main className="w-full relative bg-background min-h-screen">
         <FloatingShapes />
+
         <div className="relative z-10">
           <Navbar />
           <Hero />
           <About />
           <Projects />
           <Experience />
-          <Contact/>
-          <Footer/>
+          <Contact />
+          <Footer />
         </div>
+
+        <Analytics />
       </main>
     </SmoothScroll>
   );
