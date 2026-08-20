@@ -23,6 +23,7 @@ const App = () => {
   if (isLoading) return <LoadingScreen />;
 
   return (
+  <>
     <SmoothScroll>
       <main className="w-full relative bg-background min-h-screen">
         <FloatingShapes />
@@ -36,11 +37,12 @@ const App = () => {
           <Contact />
           <Footer />
         </div>
-
-        <Analytics />
       </main>
     </SmoothScroll>
-  );
+
+    <Analytics />
+  </>
+);
 };
 
 export default App;
