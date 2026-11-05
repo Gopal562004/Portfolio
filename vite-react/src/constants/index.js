@@ -113,7 +113,7 @@ export const myProjects = [
     subdesc: "Developed using the MERN stack, Makaan4U simplifies property discovery and management with dynamic filtering, responsive layouts, and secure user authentication.",
     href: "https://client-side-eta-umber.vercel.app/",
     texture: "/images/videos/makaan4u_demo.mp4",
-    logo: "/images/logo/makaan4u.webp",
+    logo: "/images/logo/m4u.png",
     logoStyle: {
       backgroundColor: "#1A202C",
       border: "0.2px solid #3B82F6",
