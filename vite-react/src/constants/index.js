@@ -187,6 +187,15 @@ export const workExperiences = [
     icon: "/assets/frontend.svg",
     animation: "clapping",
   },
+  {
+    id: 3,
+    name: "Ascii India Pvt Ltd",
+    pos: "Full Stack Developer",
+    duration: "July 2026 – Present",
+    title: "Full-stack development of scalable enterprise web applications, building robust REST APIs, and delivering modern responsive digital solutions.",
+    icon: "/assets/backend.svg",
+    animation: "salute",
+  },
 ];
 
 export const education = [
